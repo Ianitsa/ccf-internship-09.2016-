@@ -1,0 +1,185 @@
+﻿<Window Name="Window" x:Class="BookmarkManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        xmlns:local ="clr-namespace:BookmarkManager"
+        Title="Dragon Manager CCF" Height="307.95" Width="556" Icon="Resources/dragon.ico" ResizeMode="CanMinimize" WindowStyle="ToolWindow"    >
+
+    <!--Code for Tokinizer-->
+    <Window.Resources>
+        <DataTemplate x:Key="NameTokenTemplate">
+            <DataTemplate.Resources>
+                <Storyboard x:Key="OnLoaded1">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                        <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </DataTemplate.Resources>
+            <Border x:Name="border" BorderBrush="Gray" BorderThickness="1" Height="Auto" d:DesignWidth="80" d:DesignHeight="10" Padding="2,0,2,0" Margin="2,0,2,2">
+                <Grid HorizontalAlignment="Left" Width="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.21*"/>
+                        <ColumnDefinition Width="0.79*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image HorizontalAlignment="Right" Source="/Resources/14-tag.png" Stretch="None" Width="Auto" Grid.Column="0" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="NoWrap" Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="4,0,0,0" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+                </EventTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Window.Resources>
+
+    <!--Code for hotkeys-->
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+Shift+Q" Command="{Binding IncrementCommand}"
+                    HotkeyManager.RegisterGlobalHotkey="True" />
+        <KeyBinding Gesture="Ctrl+Q" Command="{Binding DecrementCommand}"
+                    HotkeyManager.RegisterGlobalHotkey="True" />
+    </Window.InputBindings>
+
+    <DockPanel>
+        <Grid Margin="0,0,0,0" Background="#D3D3D3">
+
+            <!--Code for the icon in the tray-->
+            <tb:TaskbarIcon
+      Name="notifyIcon"
+      IconSource="/Resources/dragon.ico"
+      ToolTipText="Dragon Manager">
+
+                <tb:TaskbarIcon.TrayPopup>
+                    <Border
+                 Background="#D3D3D3"
+                 BorderBrush="#D3D3D3"
+                 BorderThickness="0"
+                 Width="55"
+                 Height="20">
+                        <Button
+                   Name="OpenFromTray" 
+                   Click="OpenFromTray_Click"
+                   BorderThickness="0"
+                   Content="Open"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+                    </Border>
+                </tb:TaskbarIcon.TrayPopup>
+
+            </tb:TaskbarIcon>
+
+            <TabControl HorizontalAlignment="Left" Height="250" Margin="19,17,0,0" VerticalAlignment="Top" Width="511">
+                <TabItem Header="Add">
+                    <Grid Background="#D3D3D3" Margin="-12,-7,-4.333,-6.667">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition Width="69*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="442*"/>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox  Name="linkBox" Margin="64.333,24,40.667,186" TextChanged="linkValidation" Grid.Column="3" Padding="3,3,0,0" BorderBrush="White"  >
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <TextBox Name="textDescription"  Margin="64.333,68,39.667,101" Grid.Column="3" Padding="3,3,0,0" BorderBrush="White" BorderThickness="2">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Label Content="Link:" HorizontalAlignment="Left" Margin="0.333,20,0,0" VerticalAlignment="Top" Opacity="0.6" FontWeight="Bold" FontSize="14" Grid.Column="3" Height="29" Width="42"/>
+                        <Label Content="Description:" HorizontalAlignment="Left" Margin="32,63,0,0" VerticalAlignment="Top" Opacity="0.6" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.035,0.596" Height="29" Width="89" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Label Content="Tags:" HorizontalAlignment="Left" Margin="67,148,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.721,0.341" Opacity="0.6" Height="29" Width="54" FontSize="14" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button  Name="addBtn" IsEnabled="True" Background="#AAAAAA"  Content="Add" HorizontalAlignment="Left" Margin="137.333,200,0,0" VerticalAlignment="Top" Width="90" Height="26" Grid.Column="3" Click="AddButton" />
+                        <Image Name ="linkStatusA" Visibility="Hidden" Source="Resources\approved.png"   HorizontalAlignment="Left" Height="21" Margin="421.333,28,0,0" VerticalAlignment="Top" Width="11" Grid.Column="3"/>
+                        <Image Name ="linkStatusD"  Visibility="Visible" Source="Resources\denied.png" HorizontalAlignment="Left" Height="21" Margin="421.333,29,0,0" VerticalAlignment="Top" Width="11" Grid.Column="3" RenderTransformOrigin="0.465,0.529"/>
+                        <Image Name ="tagStatusA" Visibility="Hidden" Source="Resources\approved.png"   HorizontalAlignment="Left" Height="21" Margin="421.333,156,0,0" VerticalAlignment="Top" Width="11" Grid.Column="3"/>
+                        <Image Name ="tagStatusD" Visibility="Visible" Source="Resources\denied.png"   HorizontalAlignment="Left" Height="21" Margin="421.333,156,0,0" VerticalAlignment="Top" Width="11" Grid.Column="3"/>
+                        <!--Tokinized TextBox-->
+
+
+                        <Grid Margin="42.333,134,20.667,-5" Grid.Column="3">
+                            <local:TokenizingControl x:Name="Tokenizer" Margin="24,20,22,0" TokenTemplate="{DynamicResource NameTokenTemplate}" FontSize="12" MinHeight="10" VerticalScrollBarVisibility="Auto" BorderThickness="0" Padding="0,2,0,0" VerticalContentAlignment="Center" BorderBrush="White" Background="White" TextChanged="tagValidation"  AutoAddWhiteSpaceAfterTriggered="{Binding ElementName=chkAutoAddWhitespace}" 
+                           ContentAssistSource="{Binding ContentAssistSource}" ContentAssistTriggers="{Binding ContentAssistTriggers}" Height="21" VerticalAlignment="Top" AcceptsTab="True" AcceptsReturn="False" Grid.IsSharedSizeScope="True">
+                                <FlowDocument x:Name="flowDoc" AllowDrop="False">
+                                    <Paragraph>
+                                        <Run />
+                                    </Paragraph>
+                                </FlowDocument>
+                            </local:TokenizingControl>
+                            <Border BorderThickness="3" BorderBrush="White" CornerRadius="5" Padding="3" Margin="22,18,19,63.333">
+                            </Border>
+                        </Grid>
+
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Search" Margin="6,0,-6,-1">
+                    <Grid Background="#D3D3D3" HorizontalAlignment="Left" Width="519" Margin="-10,-13,-4.333,-7.667">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <ListBox Grid.Column="1" Name="SearchResults" HorizontalAlignment="Left" Height="173" Margin="10,45,0,0" VerticalAlignment="Top" Width="492" ItemsSource="{Binding}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel >
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding UrlId}" Margin="10,0,0,0"/>
+                                            <Label Content="Link: "/>
+                                            <TextBlock Text="{Binding Url}" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Tag: "/>
+                                            <TextBlock Text="{Binding  Tags}" Margin="0,5,0,0"/>
+                                            <Label Content="Published by: " Margin="15,0,0,0"/>
+                                            <TextBlock Text="{Binding PublishedBy}" Margin="0,5,0,0"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Description: "/>
+                                            <TextBlock Text="{Binding Description}" Margin="0,5,0,0"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+
+                        <Label Grid.ColumnSpan="2" Content="Search Tag(s):" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Width="109" Height="30" FontSize="14" FontWeight="Bold" Opacity="0.6"/>
+                        <TextBox Text="TextBox with CornerRadius" Margin="118,20,42.667,188.333">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Button Name="searchBtn" IsEnabled="False" Grid.ColumnSpan="2" Content="Search" HorizontalAlignment="Left" Margin="442,13,0,0" VerticalAlignment="Top" Width="60" Height="27"  Click="SearchTagsAndPublishedBy" />
+                        <TextBox Name="textSearch"  Margin="131,13,92.667,202" Grid.ColumnSpan="2" TextChanged="textSearch_TextChanged" PreviewKeyDown="Enter">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>
