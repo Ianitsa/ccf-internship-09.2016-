@@ -1,0 +1,9 @@
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\bin\Debug\CarClass.exe.config
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\bin\Debug\CarClass.exe
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\bin\Debug\CarClass.pdb
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\obj\Debug\CarClass.csprojResolveAssemblyReference.cache
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\obj\Debug\CarClass.exe
+E:\UNSS1\cleancodeFactory\CarClass\CarClass\obj\Debug\CarClass.pdb
+D:\_Development\Students\ShareKnowledge\Ianitsa\CarClass\CarClass\bin\Debug\CarClass.exe.config
+D:\_Development\Students\ShareKnowledge\Ianitsa\CarClass\CarClass\obj\Debug\CarClass.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\CarClass\CarClass\obj\Debug\CarClass.pdb
