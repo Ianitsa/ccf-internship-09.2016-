@@ -1,0 +1,6 @@
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\bin\Debug\RandomText.exe.config
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\bin\Debug\RandomText.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\bin\Debug\RandomText.pdb
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\obj\Debug\RandomText.csprojResolveAssemblyReference.cache
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\obj\Debug\RandomText.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\RandomText\RandomText\obj\Debug\RandomText.pdb
