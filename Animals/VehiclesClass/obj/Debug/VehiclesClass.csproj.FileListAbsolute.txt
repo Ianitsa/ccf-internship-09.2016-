@@ -1,0 +1,6 @@
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\bin\Debug\VehiclesClass.exe.config
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\bin\Debug\VehiclesClass.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\bin\Debug\VehiclesClass.pdb
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\obj\Debug\VehiclesClass.csprojResolveAssemblyReference.cache
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\obj\Debug\VehiclesClass.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\Animals\VehiclesClass\obj\Debug\VehiclesClass.pdb
