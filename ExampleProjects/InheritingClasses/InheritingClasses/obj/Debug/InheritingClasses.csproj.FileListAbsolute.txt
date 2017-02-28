@@ -1,0 +1,1 @@
+D:\_Development\Students\ShareKnowledge\ExampleProjects\InheritingClasses\InheritingClasses\bin\Debug\InheritingClasses.exe.config
