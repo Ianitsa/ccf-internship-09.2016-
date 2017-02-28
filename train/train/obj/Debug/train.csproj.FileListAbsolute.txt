@@ -1,0 +1,6 @@
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\bin\Debug\train.exe.config
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\bin\Debug\train.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\bin\Debug\train.pdb
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\obj\Debug\train.csprojResolveAssemblyReference.cache
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\obj\Debug\train.exe
+D:\_Development\Students\ShareKnowledge\Ianitsa\train\train\obj\Debug\train.pdb
